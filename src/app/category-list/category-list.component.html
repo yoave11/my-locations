@@ -1,0 +1,12 @@
+<div class="list-group">
+  <div class="btn-group " role="group" aria-label="...">
+    <button type="button" class="btn btn-success" (click)="onAddItem()">Add</button>
+    <button type="button" class="btn btn-danger">Delete</button>
+    <button type="button" class="btn btn-info">Edit</button>
+  </div>
+  <a href="#" class="list-group-item " *ngFor="let category of categories"  [ngClass]="{'active': selectedCategory == category}"(click)="onSelect(category)">
+    {{category.name}}
+  </a>
+  <my-locations-add-category *ngIf="isAdding" (doneEditting)="onDoneEditting()" [category]="newCategory()" ></my-locations-add-category>
+
+</div>
