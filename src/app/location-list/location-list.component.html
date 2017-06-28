@@ -1,3 +1,29 @@
-<p>
-  location-list works!
-</p>
+<div class="locations-section">
+
+  <div class="text-center">
+    <div class="btn-group text-center " role="group" aria-label="...">
+      <button type="button" class="btn btn-success">Add</button>
+      <button type="button" class="btn btn-danger">Delete</button>
+      <button type="button" class="btn btn-info" (click)="onEditItem()">Edit</button>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Address</th>
+      <th>Coordinates</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let location of l" [ngClass]="{'active': listState.selectedItem == location}">
+      <td>{{location.name}}</td>
+      <td>{{location.category.name}}</td>
+      <td>{{location.address}}</td>
+      <td>({{location.coordinates.lat}} , {{location.coordinates.long}})</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

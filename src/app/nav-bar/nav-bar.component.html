@@ -1,3 +1,8 @@
-<p>
-  nav-bar works!
-</p>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/category-list']">Category list</a></li>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/location-list']">Locations list list</a></li>
+    </ul>
+  </div>
+</nav>

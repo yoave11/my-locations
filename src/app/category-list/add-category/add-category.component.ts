@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from "@angular/core";
 import {Category} from "../../category";
-import {CategoryService} from "../../category.service";
 import {NgForm} from "@angular/forms";
+import {CategoryService} from "../../category.service";
 
 @Component({
   selector: 'my-locations-add-category',
@@ -24,16 +24,16 @@ export class AddCategoryComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     let newCategory = form.value;
-    console.log("new category "+newCategory.name);
-    console.log("old category "+this.category.name);
-    if (this.categoryService.isCategoryExist(newCategory)) {
+    console.log("new category " + newCategory.name);
+    console.log("old category " + this.category.name);
+    if (this.categoryService.isValueExist(newCategory)) {
       alert("Category exists");
     } else {
       console.log("adding items");
       if (this.category.name == "") {
-        this.categoryService.addCategory(newCategory);
+        this.categoryService.addValue(newCategory);
       } else {
-        this.categoryService.editCategory(this.category, newCategory);
+        this.categoryService.editValue(this.category, newCategory);
       }
       this.doneEditting.emit(null);
     }
