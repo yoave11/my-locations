@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {APP_CONFIG} from "../app.config";
-import {LOCATION_DI_CONFIG} from "../app-config";
+import {LOCATION_DI_CONFIG} from "../location-config";
 import {ValueStore} from "../value.service";
 import {LocationService} from "../location.service";
 import {CategoryService} from "../category.service";

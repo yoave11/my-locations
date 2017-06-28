@@ -10,8 +10,8 @@ import {NavBarComponent} from "./nav-bar/nav-bar.component";
 import {routing} from "./app.routes";
 import {CategoryService} from "./category.service";
 import {APP_CONFIG} from "./app.config";
-import {CATEGORY_DI_CONFIG} from "./app-config";
 import {AddLocationComponent} from "./location-list/add-location/add-location.component";
+import {CATEGORY_DI_CONFIG} from "./category-config";
 
 @NgModule({
   declarations: [

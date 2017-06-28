@@ -12,11 +12,11 @@ export class ValueStore {
   private _valuesObservable: BehaviorSubject<Array<any>> = new BehaviorSubject([]);
 
   private _key: string;
-  private _isEquals: (v1: any, v2: any)=>boolean;
+  // private _isEquals: (v1: any, v2: any)=>boolean;
 
   constructor(@Inject(APP_CONFIG) config: AppConfig) {
     this._key = config.key;
-    this._isEquals = config.isEqualsFunction;
+    // this._isEquals = config.isEqualsFunction;
     console.log("key: "+this._key);
     this.fetchData();
   }
@@ -58,7 +58,7 @@ export class ValueStore {
   }
 
   private getIndex(value: any): number {
-    let index = this._values.findIndex((c) => this._isEquals(c, value));
+    let index = this._values.findIndex((c) => c.name === value.name);
     console.log("index: " + index);
     return index;
   }
