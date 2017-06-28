@@ -1,5 +1,8 @@
-<form #form="ngForm" (ngSubmit)="onSubmit(form)">
-  <input type="text" id="categoryName" class="form-control" [(ngModel)]="category.name" name="name" required>
-  <button type="submit" class="btn btn-primary" [disabled]="!form.valid"> Submit</button>
-  <button type="button" class="btn btn-danger" (click)="onCancelled()"> Submit</button>
-</form>
+<div class="list-group-item">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="form-inline ">
+    <input type="text" id="categoryName" class="form-control" [(ngModel)]="newCategory.name" name="name" required>
+    <div class="btn-group inline"></div>
+    <button type="submit" class="btn btn-primary" [disabled]="!form.valid"> Submit</button>
+    <button type="button" class="btn btn-danger" (click)="onCancelled()"> Cancel</button>
+  </form>
+</div>

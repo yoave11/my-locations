@@ -1,12 +1,24 @@
-<div class="list-group">
-  <div class="btn-group " role="group" aria-label="...">
+<div class="text-center">
+  <div class="btn-group text-center " role="group" aria-label="...">
     <button type="button" class="btn btn-success" (click)="onAddItem()">Add</button>
-    <button type="button" class="btn btn-danger">Delete</button>
-    <button type="button" class="btn btn-info">Edit</button>
+    <button type="button" class="btn btn-danger" (click)="onDelete()">Delete</button>
+    <button type="button" class="btn btn-info" (click)="onEditItem()">Edit</button>
   </div>
-  <a href="#" class="list-group-item " *ngFor="let category of categories"  [ngClass]="{'active': selectedCategory == category}"(click)="onSelect(category)">
-    {{category.name}}
-  </a>
-  <my-locations-add-category *ngIf="isAdding" (doneEditting)="onDoneEditting()" [category]="newCategory()" ></my-locations-add-category>
+</div>
+
+<div class="list-group">
+  <my-locations-add-category *ngIf="isAdding" (doneEditting)="onDoneAdding()"
+                             [category]="newCategory()"></my-locations-add-category>
+  <div *ngFor="let category of categories |async">
+    <a href="#" class="list-group-item " [ngClass]="{'active': selectedCategory == category}"
+       (click)="onSelect(category)" *ngIf="!isEditMode(category)">
+      {{category.name}}
+    </a>
+
+    <my-locations-add-category *ngIf="isEditMode(category)" (doneEditting)="onDoneEditting()"
+                               [category]="category"></my-locations-add-category>
+  </div>
+
+
 
 </div>
