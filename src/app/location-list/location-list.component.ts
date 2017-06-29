@@ -64,23 +64,29 @@ export class LocationListComponent implements OnInit {
     if (this.listState.selectedItem !== location) {
       this.selectedMap = false;
     }
+
     this.listState.onSelect(location);
+    if (location === this.listState.selectedItem && "vibrate" in navigator) {
+      console.log("vibrate");
+      navigator.vibrate(100);
+    }
   }
 
-  onEditItem(){
+  onEditItem() {
     this.selectedMap = false;
     this.listState.onEditItem();
   }
-  onAddItem(){
+
+  onAddItem() {
     this.selectedMap = false;
     this.listState.onAddItem();
   }
+
   onSelectMap() {
-    if(this.listState.isAdding || this.listState.isEditting){
+    if (this.listState.isAdding || this.listState.isEditting) {
       this.selectedMap = false;
       alert("editting selet item");
-    }else
-    if (this.selectedMap) {
+    } else if (this.selectedMap) {
       this.selectedMap = false;
     } else if (this.listState.selectedItem !== null) {
       this.selectedMap = true;
