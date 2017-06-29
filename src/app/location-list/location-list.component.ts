@@ -23,15 +23,11 @@ import {ListState} from "../list-state";
   styleUrls: ['./location-list.component.scss']
 })
 export class LocationListComponent implements OnInit {
-  private locations: Observable<Array<Location>>;
-  private l:Location[] =[
-    new Location("aa","bb",new Coordinates(33.4,34.5),new Category("yoavs")),
-    new Location("aa","bb",new Coordinates(33.4,34.5),new Category("ss")),
-    new Location("aa","bb",new Coordinates(33.4,34.5),new Category("ss")),
-    new Location("aa","bb",new Coordinates(33.4,34.5),new Category("ss")),
-    new Location("aa","bb",new Coordinates(33.4,34.5),new Category("ss")),
-  ];
+  locations: Observable<Array<Location>>;
+  categories: Observable<Array<Category>>;
   listState:ListState = new ListState();
+  filterName:string ="";
+  sortType:string ="";
 
 
   constructor(private locationService:LocationService,private categoryService:CategoryService) {
@@ -39,6 +35,7 @@ export class LocationListComponent implements OnInit {
 
   ngOnInit() {
     this.locations = this.locationService.values;
+    this.categories = this.categoryService.values;
   }
 
   getLocation(){
@@ -50,6 +47,15 @@ export class LocationListComponent implements OnInit {
 
   onDelete(){
     this.listState.onDelete(this.locationService);
+  }
+
+  onChangeFilterWord(option:string){
+    console.log("filter value: "+option);
+    this.filterName = option;
+  }
+  onSortCommand(sortType:string){
+    console.log("sort command with: "+ sortType);
+    this.sortType = sortType;
   }
 
 }

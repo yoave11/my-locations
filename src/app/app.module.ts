@@ -12,6 +12,8 @@ import {CategoryService} from "./category.service";
 import {APP_CONFIG} from "./app.config";
 import {AddLocationComponent} from "./location-list/add-location/add-location.component";
 import {CATEGORY_DI_CONFIG} from "./category-config";
+import { FilterCategoryPipe } from './location-list/filter-category.pipe';
+import { SortPipePipe } from './location-list/sort-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import {CATEGORY_DI_CONFIG} from "./category-config";
     LocationListComponent,
     NavBarComponent,
     AddLocationComponent,
+    FilterCategoryPipe,
+    SortPipePipe,
   ],
   imports: [
     BrowserModule,

@@ -3,11 +3,15 @@
   flex-wrap: wrap;
 }
 .locations-section{
-  flex: 1 0 50%;
+  flex: 1 0 40%;
   padding: 0 10px ;
 }
 .table tr.active td {
   background-color: #337ab7;
   color: white;
   font-weight: bold;
+}
+
+.jumbotron{
+  //width:60%;
 }
