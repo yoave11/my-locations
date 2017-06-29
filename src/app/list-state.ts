@@ -7,7 +7,7 @@ export class ListState {
   onSelect(value: any) {
     if (!this.isEditting && !this.isAdding) {
       this.selectedItem = value;
-      console.log("selected value: "+JSON.stringify(value));
+      console.log("selected value: " + JSON.stringify(value));
     }
   }
 
@@ -25,10 +25,10 @@ export class ListState {
   }
 
   onEditItem() {
-    if (this.selectedItem === null) {
-      alert("Please select an item!");
-    } else if (this.isAdding) {
+    if (this.isAdding) {
       alert("Finish adding item!");
+    } else if (this.selectedItem === null) {
+      alert("Please select an item!");
     } else {
       this.isEditting = true;
     }
@@ -44,10 +44,11 @@ export class ListState {
   }
 
   onDelete(valueStore: ValueStore) {
-    if (this.selectedItem === null) {
-      alert("Please select an item!");
-    } else if (this.isEditting || this.isAdding) {
+
+    if (this.isEditting || this.isAdding) {
       alert("Please finish editing");
+    } else if (this.selectedItem === null) {
+      alert("Please select an item!");
     }
     else {
       valueStore.deleteValue(this.selectedItem);

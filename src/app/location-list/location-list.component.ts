@@ -25,12 +25,13 @@ import {ListState} from "../list-state";
 export class LocationListComponent implements OnInit {
   locations: Observable<Array<Location>>;
   categories: Observable<Array<Category>>;
-  listState:ListState = new ListState();
-  filterName:string ="";
-  sortType:string ="";
+  listState: ListState = new ListState();
+  selectedMap: boolean = false;
+  filterName: string = "";
+  sortType: string = "";
 
 
-  constructor(private locationService:LocationService,private categoryService:CategoryService) {
+  constructor(private locationService: LocationService, private categoryService: CategoryService) {
   }
 
   ngOnInit() {
@@ -38,24 +39,54 @@ export class LocationListComponent implements OnInit {
     this.categories = this.categoryService.values;
   }
 
-  getLocation(){
-    if(this.listState.isAdding){
-      return new Location("","",new Coordinates(0,0),new Category(""));
+  getLocation() {
+    if (this.listState.isAdding) {
+      return new Location("", "", new Coordinates(0, 0), new Category(""));
     }
-      return this.listState.selectedItem;
+    return this.listState.selectedItem;
   }
 
-  onDelete(){
+  onDelete() {
     this.listState.onDelete(this.locationService);
   }
 
-  onChangeFilterWord(option:string){
-    console.log("filter value: "+option);
+  onChangeFilterWord(option: string) {
+    console.log("filter value: " + option);
     this.filterName = option;
   }
-  onSortCommand(sortType:string){
-    console.log("sort command with: "+ sortType);
+
+  onSortCommand(sortType: string) {
+    console.log("sort command with: " + sortType);
     this.sortType = sortType;
+  }
+
+  onSelectItem(location: Location) {
+    if (this.listState.selectedItem !== location) {
+      this.selectedMap = false;
+    }
+    this.listState.onSelect(location);
+  }
+
+  onEditItem(){
+    this.selectedMap = false;
+    this.listState.onEditItem();
+  }
+  onAddItem(){
+    this.selectedMap = false;
+    this.listState.onAddItem();
+  }
+  onSelectMap() {
+    if(this.listState.isAdding || this.listState.isEditting){
+      this.selectedMap = false;
+      alert("editting selet item");
+    }else
+    if (this.selectedMap) {
+      this.selectedMap = false;
+    } else if (this.listState.selectedItem !== null) {
+      this.selectedMap = true;
+    } else {
+      alert("please selet item");
+    }
   }
 
 }

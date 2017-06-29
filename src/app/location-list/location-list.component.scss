@@ -2,9 +2,18 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.filter-block{
+  display: flex;
+  justify-content: space-between;
+}
 .locations-section{
-  flex: 1 0 40%;
+  flex: 1 ;
+  max-width: 70%;
   padding: 0 10px ;
+}
+.add-section{
+  flex: 1 0 30%;
 }
 .table tr.active td {
   background-color: #337ab7;
@@ -12,6 +21,9 @@
   font-weight: bold;
 }
 
-.jumbotron{
-  //width:60%;
+agm-map {
+  height: 30vw;
+  width: 100%;
 }
+
+

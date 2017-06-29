@@ -14,6 +14,7 @@ import {AddLocationComponent} from "./location-list/add-location/add-location.co
 import {CATEGORY_DI_CONFIG} from "./category-config";
 import { FilterCategoryPipe } from './location-list/filter-category.pipe';
 import { SortPipePipe } from './location-list/sort-pipe.pipe';
+import {AgmCoreModule} from "@agm/core";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,11 @@ import { SortPipePipe } from './location-list/sort-pipe.pipe';
     BrowserModule,
     FormsModule,
     routing,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBp2EVsrkUYoE_HXJ_Lv9odwLctpLuzFF8'
+    }),
+
   ],
   providers: [ValueStore, {provide: APP_CONFIG, useValue: CATEGORY_DI_CONFIG},
     {
