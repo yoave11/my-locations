@@ -25,19 +25,31 @@ import {ListState} from "../list-state";
 export class LocationListComponent implements OnInit {
   private locations: Observable<Array<Location>>;
   private l:Location[] =[
-    new Location("aa","bb",new Coordinates(33.4,34.5),new Category("ss")),
+    new Location("aa","bb",new Coordinates(33.4,34.5),new Category("yoavs")),
     new Location("aa","bb",new Coordinates(33.4,34.5),new Category("ss")),
     new Location("aa","bb",new Coordinates(33.4,34.5),new Category("ss")),
     new Location("aa","bb",new Coordinates(33.4,34.5),new Category("ss")),
     new Location("aa","bb",new Coordinates(33.4,34.5),new Category("ss")),
   ];
-  private listState:ListState = new ListState();
+  listState:ListState = new ListState();
 
 
   constructor(private locationService:LocationService,private categoryService:CategoryService) {
   }
 
   ngOnInit() {
+    this.locations = this.locationService.values;
+  }
+
+  getLocation(){
+    if(this.listState.isAdding){
+      return new Location("","",new Coordinates(0,0),new Category(""));
+    }
+      return this.listState.selectedItem;
+  }
+
+  onDelete(){
+    this.listState.onDelete(this.locationService);
   }
 
 }

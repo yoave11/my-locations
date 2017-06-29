@@ -1,29 +1,37 @@
-<div class="locations-section">
+<div class="wrapper">
+  <div class="locations-section">
 
-  <div class="text-center">
-    <div class="btn-group text-center " role="group" aria-label="...">
-      <button type="button" class="btn btn-success">Add</button>
-      <button type="button" class="btn btn-danger">Delete</button>
-      <button type="button" class="btn btn-info" (click)="onEditItem()">Edit</button>
+    <div class="text-center">
+      <div class="btn-group text-center " role="group" aria-label="...">
+        <button type="button" class="btn btn-success" (click)="listState.onAddItem()">Add</button>
+        <button type="button" class="btn btn-danger" (click)="onDelete()" >Delete</button>
+        <button type="button" class="btn btn-info" (click)="listState.onEditItem()">Edit</button>
+      </div>
     </div>
-  </div>
 
-  <table class="table">
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Address</th>
-      <th>Coordinates</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let location of l" [ngClass]="{'active': listState.selectedItem == location}">
-      <td>{{location.name}}</td>
-      <td>{{location.category.name}}</td>
-      <td>{{location.address}}</td>
-      <td>({{location.coordinates.lat}} , {{location.coordinates.long}})</td>
-    </tr>
-    </tbody>
-  </table>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Address</th>
+        <th>Coordinates</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let location of locations | async" [ngClass]="{'active': listState.selectedItem == location}"
+          (click)="listState.onSelect(location)">
+        <td>{{location.name}}</td>
+        <td>{{location.category.name}}</td>
+        <td>{{location.address}}</td>
+        <td>({{location.coordinates.lat}} , {{location.coordinates.long}})</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="add-section">
+    <my-locations-add-location [location]="getLocation()"
+                               *ngIf="listState.isEditMode(listState.selectedItem) || listState.isAdding"
+                               (doneEditting)="listState.onDoneEditting()"></my-locations-add-location>
+  </div>
 </div>

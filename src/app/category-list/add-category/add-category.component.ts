@@ -12,7 +12,7 @@ export class AddCategoryComponent implements OnInit {
 
   @Input() category: Category;
   @Output() doneEditting: EventEmitter<any> = new EventEmitter();
-  private newCategory: Category;
+  newCategory: Category;
 
   constructor(private categoryService: CategoryService) {
   }

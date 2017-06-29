@@ -20,7 +20,7 @@ import {CATEGORY_DI_CONFIG} from "./category-config";
     AddCategoryComponent,
     LocationListComponent,
     NavBarComponent,
-    AddLocationComponent
+    AddLocationComponent,
   ],
   imports: [
     BrowserModule,

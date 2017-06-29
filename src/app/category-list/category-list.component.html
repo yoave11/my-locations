@@ -1,7 +1,8 @@
+
 <div class="text-center">
   <div class="btn-group text-center " role="group" aria-label="...">
     <button type="button" class="btn btn-success" (click)="listState.onAddItem()">Add</button>
-    <button type="button" class="btn btn-danger" (click)="listState.onDelete(categoryService)">Delete</button>
+    <button type="button" class="btn btn-danger" (click)="onDelete()">Delete</button>
     <button type="button" class="btn btn-info" (click)="listState.onEditItem()">Edit</button>
   </div>
 </div>
@@ -9,7 +10,7 @@
 <div class="list-group">
   <my-locations-add-category *ngIf="listState.isAdding" (doneEditting)="listState.onDoneAdding()"
                              [category]="newCategory()"></my-locations-add-category>
-  <div *ngFor="let category of categoryService.values |async">
+  <div *ngFor="let category of categories |async">
     <a class="list-group-item " [ngClass]="{'active': listState.selectedItem === category}"
        (click)="listState.onSelect(category)" *ngIf="!listState.isEditMode(category)">
       {{category.name}}

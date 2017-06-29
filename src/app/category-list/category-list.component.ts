@@ -9,17 +9,26 @@ import {ListState} from "../list-state";
   templateUrl: './category-list.component.html',
   styleUrls: ['./category-list.component.scss']
 })
-export class CategoryListComponent{
+export class CategoryListComponent implements OnInit{
+  listState: ListState = new ListState();
 
-  private listState: ListState = new ListState();
-
+  categories:Observable<Array<Category>>;
   constructor(private categoryService: CategoryService) {
+      this
+  }
 
+
+  ngOnInit(): void {
+    this.categories = this.categoryService.values;
   }
 
 
   newCategory(): Category {
     return new Category("");
+  }
+
+  onDelete(){
+    this.listState.onDelete(this.categoryService);
   }
 
 }

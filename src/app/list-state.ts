@@ -7,6 +7,7 @@ export class ListState {
   onSelect(value: any) {
     if (!this.isEditting && !this.isAdding) {
       this.selectedItem = value;
+      console.log("selected value: "+JSON.stringify(value));
     }
   }
 
@@ -39,6 +40,7 @@ export class ListState {
 
   onDoneEditting() {
     this.isEditting = false;
+    this.isAdding = false;
   }
 
   onDelete(valueStore: ValueStore) {
