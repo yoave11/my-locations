@@ -54,7 +54,7 @@
 
     <agm-map *ngIf=" listState.selectedItem !==null && selectedMap" [latitude]="listState.selectedItem.coordinates.lat" [longitude]="listState.selectedItem.coordinates.long "   >
 
-      <agm-marker [latitude]="listState.selectedItem.coordinates.lat" [longitude]="listState.selectedItem.coordinates.long" [label]="'fuck'"  [openInfoWindow]="true"></agm-marker>
+      <agm-marker [latitude]="listState.selectedItem.coordinates.lat" [longitude]="listState.selectedItem.coordinates.long"  [openInfoWindow]="true"></agm-marker>
     </agm-map>
     <table class="table table-striped table-bordered table-hover table-sm table-responsive">
       <thead>
